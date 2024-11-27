@@ -1,0 +1,29 @@
+@font-face {
+    font-family: jersey;
+    src: url(Jersey25-Regular.ttf);
+}
+* {
+    color-scheme: dark;
+    font-family: jersey;
+    background-color: #000;
+    color: #0f0;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+.menu-link {
+    text-decoration: none;
+    padding: 1vmin;
+    font-size: 2vmin;
+    border-radius: 1vmin;
+    margin: 1vmin;
+}
+.menu-link:hover {
+    color: #000;
+    background-color: #0f0;
+}
