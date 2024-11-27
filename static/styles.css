@@ -1,10 +1,23 @@
 @font-face {
-    font-family: jersey;
-    src: url(Jersey25-Regular.ttf);
+    font-family: gohu;
+    src: url(GohuFont14NerdFont-Regular.ttf);
+}
+@font-face {
+    font-family: pro;
+    src: url(ProFontIIxNerdFont-Regular.ttf);
+}
+@font-face {
+    font-family: terminess;
+    src: url(TerminessNerdFont-Regular.ttf);
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
 }
 * {
     color-scheme: dark;
-    font-family: jersey;
+    font-family: pro;
     background-color: #000;
     color: #0f0;
 }
@@ -26,4 +39,35 @@
 .menu-link:hover {
     color: #000;
     background-color: #0f0;
+}
+h1 {
+    font-family: terminess;
+}
+.flex-col-top {
+    flex-direction: column;
+}
+.flex-col-bot {
+    flex-direction: column-reverse;
+}
+.flex-grow {
+    flex-grow: 1;
+}
+.icon {
+    display: inline-flex;
+    align-self: center;
+}
+.icon svg, .icon img {
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+}
+.icon.baseline svg, .icon img {
+    top: 0;
+    position: relative;
+    padding-right: .2em;
+}
+.footer-link {
+    font-family: terminess;
+    text-decoration: none;
+    padding-right: 1vmin;
 }
