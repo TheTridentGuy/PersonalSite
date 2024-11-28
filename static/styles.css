@@ -6,6 +6,10 @@
     font-family: terminess;
     src: url(TerminessNerdFont-Regular.ttf);
 }
+:root {
+    --main-color: #0f0;
+    --main-bg: #000;
+}
 body {
     min-height: 100vh;
     display: flex;
@@ -14,8 +18,8 @@ body {
 * {
     color-scheme: dark;
     font-family: pro;
-    background-color: #000;
-    color: #0f0;
+    background-color: var(--main-bg);
+    color: var(--main-color);
 }
 .flex-col {
     display: flex;
@@ -33,8 +37,8 @@ body {
     margin: .5vmin;
 }
 .menu-link:hover {
-    color: #000;
-    background-color: #0f0;
+    color: var(--main-bg);
+    background-color: var(--main-color);
 }
 h1 {
     font-family: terminess;
@@ -68,14 +72,14 @@ h1 {
     padding-right: 1vmin;
 }
 #main-content {
-    border: 2px solid #0f0;
+    border: 2px solid var(--main-color);
     border-left: none;
     border-right: none;
 }
 h2 {
     font-family: terminess;
 }
-h1, h2 {
+h1, h2, h3 {
     margin: 1vmin;
     margin-top: 1vmin;
     margin-bottom: 1vmin;
@@ -86,4 +90,41 @@ p {
 .project-container {
     margin-left: 1.5vmin;
     margin-right: 1.5vmin;
+}
+#bio {
+    margin-left: 1.5vmin;
+    margin-right: 1.5vmin;
+    font-size: larger;
+}
+#bio-sidebar {
+    min-width: 25vw;
+}
+.no-bullet {
+    list-style-type: none;
+}
+#prn-bar > span {
+    padding-left: 1vmin;
+    padding-right: 1vmin;
+}
+.right-bar {
+    border-right: 2px solid var(--main-color);
+}
+table{
+    font-size: medium;
+    border: 1px solid var(--main-color);
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+table, tr {
+    margin: none;
+    padding: none;
+}
+td {
+    padding-right: 1vmin;
+}
+td:first-child {
+    border-right: 1px solid var(--main-color);
+}
+.color-in {
+    border: none;
 }

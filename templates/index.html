@@ -5,18 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheTridentGuy</title>  
     <link rel="stylesheet" href="static/styles.css">
+    <script src="static/preload.js"></script>
 </head>
 <body>
     <div class="flex-col flex-grow">
         <div class="flex-col flex-col-top" id="header">
-            <h1>> TheTridentGuy</h1>
             <div class="flex-row">
-                <a href="/" class="menu-link">About Me</a>
-                <a href="/projects" class="menu-link">Projects</a>
+                <div class="flex-col flex-grow">
+                    <h1>> TheTridentGuy</h1>
+                    <div class="flex-row">
+                        <a href="/" class="menu-link">About Me</a>
+                        <a href="/projects" class="menu-link">Projects</a>
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <input type="color" id="--main-color" class="flex-grow color-in" value="var(--main-color)">
+                    <input type="color" id="--main-bg" class="flex-grow color-in" value="var(--main-bg)">
+                </div>
             </div>
         </div>
         <div id="main-content" class="flex-grow">
-
+            <div class="flex-row">
+                <div id="bio" class="flex-grow">   
+                    <h2>👋 Hi, I'm Aiden</h2>
+                    <div id="prn-bar" class="flex-row">
+                        <span class="right-bar">he/him/kitty</span>
+                        <span>AY-den</span>
+                    </div>
+                    <p>
+                        I'm a 16-year-old full stack developer, linux enthusiast, sysadmin, and furry based in San Francisco, California, USA. 
+                        I am also a member of the wonderful community known as <a href="https://hackclub.com">Hack Club</a>, 
+                        an amazing home for teen nerds like me.
+                        As far as programming I'm mostly self-taught, through reading and Stack Overflow. My current favorite stack is a Flask backend, with
+                        a vanilla HTML, CSS and JS frontend. I currently attend Lowell High School, and am a member 
+                        of their robotics team <a href="https://team4159.org">4159 CardinalBotics</a>. I got my amateur radio license
+                        in summer 2024, and enjoy operating whenever I'm out about. I've always loved to read, and even though
+                        I don't have much time anymore, it's still one of my passions. My favorite series is the OG Percy Jackson books, by Rick Riordan,
+                        which incidentally is also the source of the username many of you know me by. In second place is the Spy School
+                        by Stuart Gibbs, tied with the Alex Rider series by Anthony Horowitz. My preffered music genre is elctronic, especially
+                        EDM, and I'm a huge fan of Alan Walker, K-391, cyberhound and ivycomb. When I need a break from coding,
+                        I play a lot of Call of Duty: Mobile, and Valorant.
+                    </p>
+                    <div class="flex-col">
+                        <span>My opinions on your favorite languages and distros:</span>
+                        <div class="flex-row">
+                            <table>
+                                <tr><td>S</td><td>Python, C, C++</td></tr>
+                                <tr><td>A</td><td>HTML, CSS, JS, Bash</td></tr>
+                                <tr><td>B</td><td>Rust</td></tr>
+                                <tr><td>C</td><td></td></tr>
+                                <tr><td>F</td><td>Java, Scratch</td></tr>
+                            </table>
+                            <table>
+                                <tr><td>S</td><td>MacOS, Arch Linux, Android</td></tr>
+                                <tr><td>A</td><td>Windows, Debian, iOS</td></tr>
+                                <tr><td>B</td><td></td></tr>
+                                <tr><td>C</td><td></td></tr>
+                                <tr><td>F</td><td>Barked Android</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="bio-sidebar">
+                    <h3>Books you should read:</h3>
+                    <ul>
+                        <li><a href="https://rickriordan.com/series/percy-jackson-and-the-olympians/">Percy Jackson series by Rick Riordan</a></li>
+                        <li><a href="https://anthonyhorowitz.com/books/list/series/alex-rider">Alex Rider series by Anthony Horowitz</a></li>
+                        <li><a href="https://stuartgibbs.com/books-2/">Spy School series by Stuart Gibbs</a></li>
+                    </ul>
+                    <h3>Songs you should Listen to:</h3>
+                    <ul>
+                        <li class="no-bullet"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6gK4IlqSgthseiS61CnPif?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></li>
+                        <li class="no-bullet"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0nrWZWkJM62ftQJSI8fDc0?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></li>
+                        <li class="no-bullet"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0BxhpnfBTbnDfXi7mK4B6B?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></li>
+                        <li class="no-bullet"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5tEeiYkDyA3Z5h9rbrl4fT?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="flex-col flex-col-bot" id="footer">
             <div class="flex-row">
@@ -43,6 +108,10 @@
                 <a href="https://stackoverflow.com/users/18572509/thetridentguy-supports-ukraine" class="icon footer-link">
                     <div class="icon baseline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"/></svg></div>
                     TheTridentGuy
+                </a>
+                <a href="https://open.spotify.com/user/31x35qvo6acfc46mmry227vf23pm" class="icon footer-link">
+                    <div class="icon baseline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg></div>
+                    trid3nt
                 </a>
             </div>
         </div>
