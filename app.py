@@ -19,4 +19,4 @@ def projects():
     return render_template("projects.html")
 
 
-app.run(host="localhost", port=8080, debug=True)
+app.run(host="localhost", port=8081, debug=True)
