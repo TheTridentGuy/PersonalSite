@@ -14,4 +14,9 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
+
+
 app.run(host="localhost", port=8080, debug=True)

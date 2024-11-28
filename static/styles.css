@@ -1,8 +1,4 @@
 @font-face {
-    font-family: gohu;
-    src: url(GohuFont14NerdFont-Regular.ttf);
-}
-@font-face {
     font-family: pro;
     src: url(ProFontIIxNerdFont-Regular.ttf);
 }
@@ -31,10 +27,10 @@ body {
 }
 .menu-link {
     text-decoration: none;
-    padding: 1vmin;
+    padding: .5vmin;
     font-size: 2vmin;
-    border-radius: 1vmin;
-    margin: 1vmin;
+    border-radius: .5vmin;
+    margin: .5vmin;
 }
 .menu-link:hover {
     color: #000;
@@ -70,4 +66,24 @@ h1 {
     font-family: terminess;
     text-decoration: none;
     padding-right: 1vmin;
+}
+#main-content {
+    border: 2px solid #0f0;
+    border-left: none;
+    border-right: none;
+}
+h2 {
+    font-family: terminess;
+}
+h1, h2 {
+    margin: 1vmin;
+    margin-top: 1vmin;
+    margin-bottom: 1vmin;
+}
+p {
+    font-family: terminess;
+}
+.project-container {
+    margin-left: 1.5vmin;
+    margin-right: 1.5vmin;
 }
