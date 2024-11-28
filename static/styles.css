@@ -96,8 +96,9 @@ p {
     margin-right: 1.5vmin;
     font-size: larger;
 }
-#bio-sidebar {
+#bio-sidebar, #fur-sidebar {
     min-width: 25vw;
+    padding: 1vmin;
 }
 .no-bullet {
     list-style-type: none;

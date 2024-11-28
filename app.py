@@ -19,4 +19,9 @@ def projects():
     return render_template("projects.html")
 
 
+@app.route("/fursona")
+def fursona():
+    return render_template("fursona.html")
+
+
 app.run(host="localhost", port=8081, debug=True)
