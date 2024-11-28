@@ -112,8 +112,6 @@ p {
 table{
     font-size: medium;
     border: 1px solid var(--main-color);
-    margin-top: 3px;
-    margin-bottom: 3px;
 }
 table, tr {
     margin: none;
