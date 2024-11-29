@@ -17,3 +17,13 @@ if(localStorage.getItem(main_color)){
 if(localStorage.getItem(main_bg)){
     $(main_bg).value = localStorage.getItem(main_bg)
 }
+document.querySelectorAll('[data-date]').forEach(element => {
+    var date = new Date(element.dataset.date);
+    var current = new Date();
+    var diff = current.getFullYear() - date.getFullYear();
+    var adjusted = (current.getMonth() > date.getMonth() || 
+                           (current.getMonth() == date.getMonth() && 
+                            current.getDate() >= date.getDate()))
+                            ?diff:diff-1;
+    element.innerText = adjusted;
+});

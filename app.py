@@ -24,4 +24,9 @@ def fursona():
     return render_template("fursona.html")
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 app.run(host="localhost", port=8081, debug=True)
