@@ -1,10 +1,4 @@
-from doctest import debug
-from fileinput import filename
-from typing import override
-
-import flask
 from flask import Flask, request, render_template
-from werkzeug.utils import redirect
 
 app = Flask(__name__)
 

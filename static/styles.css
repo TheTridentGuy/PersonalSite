@@ -32,7 +32,7 @@ body {
 .menu-link {
     text-decoration: none;
     padding: .5vmin;
-    font-size: 2vmin;
+    font-size: larger;
     border-radius: .5vmin;
     margin: .5vmin;
 }
