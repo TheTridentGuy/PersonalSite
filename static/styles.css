@@ -14,11 +14,11 @@ body {
     min-height: 100vh;
     display: flex;
     margin: 0;
+    background-color: var(--main-bg);
 }
 * {
     color-scheme: dark;
     font-family: pro;
-    background-color: var(--main-bg);
     color: var(--main-color);
 }
 .flex-col {
@@ -132,4 +132,10 @@ p > span {
 }
 #about {
     padding: 1.5vmin;
+}
+a:hover {
+    text-decoration-style: wavy;
+}
+input {
+    background-color: var(--main-bg);
 }
