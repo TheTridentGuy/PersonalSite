@@ -23,4 +23,9 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/gaming")
+def gaming():
+    return render_template("gaming.html")
+
+
 app.run(host="localhost", port=8081, debug=True)
