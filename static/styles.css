@@ -21,6 +21,28 @@ body {
     font-family: pro;
     color: var(--main-color);
 }
+.femboy {
+    background-image: linear-gradient(
+  #cf62a9 14.28%,
+  #e4adcd 14.28%,
+  #e4adcd 28.57%,
+  #ffffff 28.57%,
+  #ffffff 42.85%,
+  #58cef8 42.85%,
+  #58cef8 57.14%,
+  #ffffff 57.14%,
+  #ffffff 71.42%,
+  #e4adcd 71.42%,
+  #e4adcd 85.71%,
+  #cf62a9 85.71%,
+  #cf62a9
+  );
+}
+.femboy * {
+    color: #000 !important;
+    border-color: #000 !important;
+    background-color: transparent !important;
+}
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -87,7 +109,7 @@ h1, h2, h3 {
 p {
     font-family: terminess;
 }
-.project-container {
+.main-container {
     margin-left: 1.5vmin;
     margin-right: 1.5vmin;
 }
@@ -127,7 +149,7 @@ td:first-child {
 .color-in {
     border: none;
 }
-p > span {
+p > span, i, b {
     font-family: terminess;
 }
 #about {
