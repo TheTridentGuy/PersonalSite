@@ -1,6 +1,10 @@
 from flask import Flask, request, render_template
+import json
+import pathlib
+import os
 
 app = Flask(__name__)
+CONFIG_PATH = "config.json"
 
 
 @app.route("/")
@@ -28,4 +32,17 @@ def gaming():
     return render_template("gaming.html")
 
 
-app.run(host="localhost", port=8081, debug=True)
+@app.route("/files")
+def files():
+    return render_template("files.html", files=os.listdir(FILE_SERVE_PATH))
+
+
+@app.route("/files/<path:filename>")
+def file_path(path):
+    pass
+
+
+with open(CONFIG_PATH, "r") as f:
+    cfg = json.loads(f.read())
+    FILE_SERVE_PATH = cfg.get("file_serve_path")
+    app.run(host=cfg.get("host"), port=cfg.get("port"), debug=cfg.get("debug"))
