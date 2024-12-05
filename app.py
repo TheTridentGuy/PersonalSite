@@ -85,7 +85,7 @@ def upload():
                 assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
                 file.save(Path(FILE_SERVE_PATH)/Path(file.filename))
         else:
-            return 401, "Unauthorized"
+            return "Unauthorized", 401
     else:
         return render_template("upload.html")
     return ""
