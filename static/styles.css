@@ -58,7 +58,7 @@ body {
     border-radius: .5vmin;
     margin: .5vmin;
 }
-.menu-link:hover {
+.menu-link:hover, button:hover {
     color: var(--main-bg);
     background-color: var(--main-color);
 }
@@ -160,4 +160,55 @@ a:hover {
 }
 input {
     background-color: var(--main-bg);
+}
+#rootul div, #rootul {
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+#rootul {
+    margin: 0;
+    padding: 0;
+}
+.caret {
+    cursor: pointer;
+    user-select: none;
+}
+.caret::before {
+    content: "\25B6";
+    margin-right: 6px;
+    display: inline-block;
+}
+.caret-down::before {
+    transform: rotate(90deg);
+}
+.nested {
+    padding-left: 2vw;
+    display: none;
+}
+.active {
+    padding-left: 2vw;
+    display: block;
+}
+img, svg {
+    fill: currentColor;
+    object-fit: contain;
+    object-position: center; 
+    width: 10vw;
+    max-width: 10vw;
+    height: 14vw;
+}
+.file-box {
+    width: 10vw;
+    max-width: 10vw;
+    margin: 1vmin;
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+}
+a {
+    width: fit-content;
+}
+button, input {
+    background-color: var(--main-bg);
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
 }

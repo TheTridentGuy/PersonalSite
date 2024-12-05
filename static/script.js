@@ -27,3 +27,23 @@ document.querySelectorAll('[data-date]').forEach(element => {
                             ?diff:diff-1;
     element.innerText = adjusted;
 });
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret-down");
+  });
+}
+function toggle_preview(){
+    var url = new URL(window.location.href);
+    var params = new URLSearchParams(url.search);
+    if(params.get("preview") == "true"){
+        params.set("preview", "false")
+    }else{
+        params.set("preview", "true")
+    }
+    url.search = params.toString();
+    window.location.replace(url.origin+url.pathname+url.search)
+}
