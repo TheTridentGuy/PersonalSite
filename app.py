@@ -6,7 +6,7 @@ import hashlib
 import secrets
 
 app = Flask(__name__)
-CONFIG_PATH = "config.json"
+CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
 
 
 class File:
@@ -26,7 +26,7 @@ class Directory:
 def generate_dir(path: Path):
     files = []
     subdirs = []
-    for file in path.iterdir():
+    for file in sorted(path.iterdir()):
         if file.is_dir():
             subdirs.append(generate_dir(file))
         else:
