@@ -41,9 +41,10 @@ function toggle_preview(){
     var params = new URLSearchParams(url.search);
     if(params.get("preview") == "true"){
         params.set("preview", "false")
+        window.location.replace(url.origin+url.pathname)
     }else{
         params.set("preview", "true")
+        url.search = params.toString();
+        window.location.replace(url.origin+url.pathname+url.search)
     }
-    url.search = params.toString();
-    window.location.replace(url.origin+url.pathname+url.search)
 }

@@ -21,6 +21,11 @@ body {
     font-family: pro;
     color: var(--main-color);
 }
+@media screen and (max-width: 600px) {
+    * {
+        flex-wrap: wrap;
+    }
+}
 .femboy {
     background-image: linear-gradient(
   #cf62a9 14.28%,
@@ -203,6 +208,10 @@ img, svg, video {
     margin: 1vmin;
     flex-wrap: wrap;
     overflow-wrap: anywhere;
+}
+.file-box a {
+    font-family: terminess;
+    font-size: smaller;
 }
 a {
     width: fit-content;
