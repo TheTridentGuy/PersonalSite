@@ -201,7 +201,7 @@ input {
     padding-left: 2vw;
     display: block;
 }
-img, svg, video {
+#rootul img, svg, video {
     fill: currentColor;
     object-fit: contain;
     object-position: center; 
