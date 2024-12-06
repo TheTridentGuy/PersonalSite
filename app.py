@@ -85,10 +85,10 @@ def upload():
                 assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
                 file.save(Path(FILE_SERVE_PATH)/Path(file.filename))
         else:
-            return "Unauthorized", 401
+            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here"), 401
     else:
         return render_template("upload.html")
-    return ""
+    return render_template("message.html", message="File(s) uploaded succesfully!")
 
 
 with open(CONFIG_PATH, "r") as f:
