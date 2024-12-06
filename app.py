@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, send_file
+from werkzeug.exceptions import HTTPException
 import json
 from pathlib import Path
 import re
@@ -85,11 +86,17 @@ def upload():
                 assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
                 file.save(Path(FILE_SERVE_PATH)/Path(file.filename))
         else:
-            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here"), 401
+            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
         return render_template("upload.html")
-    return render_template("message.html", message="File(s) uploaded succesfully!")
+    return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    if e.code == 500:
+        return render_template("message.html", message="OwOopsie, something went wrong!", title="500 Internal Server Error")
+    else:
+        return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}")
 
 with open(CONFIG_PATH, "r") as f:
     cfg = json.loads(f.read())
