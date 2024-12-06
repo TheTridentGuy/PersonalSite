@@ -25,6 +25,9 @@ body {
     * {
         flex-wrap: wrap;
     }
+    table {
+        flex-grow: 1;
+    }
 }
 .femboy {
     background-image: linear-gradient(
