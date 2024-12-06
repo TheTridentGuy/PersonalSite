@@ -27,6 +27,10 @@ body {
     }
     table {
         flex-grow: 1;
+        table-layout: fixed;
+    }
+    td:last-child {
+        width: 100%;
     }
 }
 .femboy {
