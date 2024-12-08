@@ -220,6 +220,10 @@ input {
     font-family: terminess;
     font-size: smaller;
 }
+.file-row {
+    font-family: terminess;
+    font-size: small;
+}
 a {
     width: fit-content;
 }

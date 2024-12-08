@@ -18,7 +18,8 @@ class File:
 
 
 class Directory:
-    def __init__(self, name, subdirs=(), files=()):
+    def __init__(self, path, name, subdirs=(), files=()):
+        self.path = path
         self.is_dir = True
         self.name = name
         self.subdirs = subdirs
@@ -32,7 +33,7 @@ def generate_dir(path: Path):
             subdirs.append(generate_dir(file))
         else:
             files.append(File(path=(path/file).relative_to(FILE_SERVE_PATH), name=file.name))
-    return Directory(name=path.name, subdirs=subdirs, files=files)
+    return Directory(path=path.relative_to(FILE_SERVE_PATH), name=path.name, subdirs=subdirs, files=files)
 
 
 @app.route("/")
@@ -84,11 +85,31 @@ def upload():
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(file.filename)
                 assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
-                file.save(Path(FILE_SERVE_PATH)/Path(file.filename))
+                file.save(save_path)
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
-        return render_template("upload.html")
+        return render_template("upload.html", form_path="/files/upload", upload_path="/")
+    return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
+
+
+@app.route("/files/upload/<path:uploadpath>", methods=["POST", "GET"])
+def upload_to(uploadpath):
+    if request.method == "POST":
+        password = request.values.get("password")
+        if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
+            files = request.files.getlist("files")
+            for file in files:
+                while (Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)).exists():
+                    file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
+                save_path = Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)
+                assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
+                print(save_path)
+                file.save(save_path)
+        else:
+            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
+    else:
+        return render_template("upload.html", form_path="/files/upload/"+uploadpath, upload_path=uploadpath)
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 @app.errorhandler(HTTPException)

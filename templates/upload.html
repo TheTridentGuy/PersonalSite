@@ -25,9 +25,9 @@
             </div>
         </div>
         <div id="main-content" class="flex-grow">
-            <h2>Upload files (not for public use):</h2>
+            <h2>Upload files to {{ upload_path }} (not for public use):</h2>
             <div class="main-container flex-col">   
-                <form action="/files/upload" method="post" enctype="multipart/form-data">
+                <form action="{{ form_path }}" method="post" enctype="multipart/form-data">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                     <input type="file" name="files" id="files" multiple>
