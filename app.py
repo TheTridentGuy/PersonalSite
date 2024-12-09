@@ -71,6 +71,7 @@ def files():
 @app.route("/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
+    assert path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
     return send_file(path, as_attachment=False)
 
 
@@ -84,7 +85,7 @@ def upload():
                 while (Path(FILE_SERVE_PATH)/Path(file.filename)).exists():
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(file.filename)
-                assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
+                assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
                 file.save(save_path)
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
