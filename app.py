@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file
+from flask import Flask, request, render_template, send_from_directory
 from werkzeug.exceptions import HTTPException
 import json
 from pathlib import Path
@@ -71,8 +71,7 @@ def files():
 @app.route("/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
-    assert path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-    return send_file(path, as_attachment=False)
+    return send_from_directory(FILE_SERVE_PATH, path, as_attachment=False)
 
 
 @app.route("/files/upload", methods=["POST", "GET"])
@@ -113,12 +112,14 @@ def upload_to(uploadpath):
         return render_template("upload.html", form_path="/files/upload/"+uploadpath, upload_path=uploadpath)
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
+
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     if e.code == 500:
         return render_template("message.html", message="OwOopsie, something went wrong!", title="500 Internal Server Error")
     else:
         return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}")
+
 
 with open(CONFIG_PATH, "r") as f:
     cfg = json.loads(f.read())
