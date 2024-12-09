@@ -104,7 +104,7 @@ def upload_to(uploadpath):
                 while (Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)).exists():
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)
-                assert save_path.is_relative_to(Path(FILE_SERVE_PATH))
+                assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
                 print(save_path)
                 file.save(save_path)
         else:
