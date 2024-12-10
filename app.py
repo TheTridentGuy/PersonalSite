@@ -75,7 +75,7 @@ def file_path(filename):
     return send_file(path, as_attachment=False)
 
 
-@app.route("/files/upload", methods=["POST", "GET"])
+@app.route("/admin/files/upload", methods=["POST", "GET"])
 def upload():
     if request.method == "POST":
         password = request.values.get("password")
@@ -94,7 +94,7 @@ def upload():
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 
-@app.route("/files/upload/<path:uploadpath>", methods=["POST", "GET"])
+@app.route("/admin/files/upload/<path:uploadpath>", methods=["POST", "GET"])
 def upload_to(uploadpath):
     if request.method == "POST":
         password = request.values.get("password")
@@ -105,7 +105,6 @@ def upload_to(uploadpath):
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)
                 assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-                print(save_path)
                 file.save(save_path)
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
