@@ -45,6 +45,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/ip")
+def ip():
+    return request.remote_addr
+
+
 @app.route("/projects")
 def projects():
     return render_template("projects.html")
@@ -99,7 +104,7 @@ def upload():
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
-        return render_template("upload.html", form_path="/files/upload", upload_path="/")
+        return render_template("upload.html", form_path="/admin/files/upload/", upload_path="/")
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 
@@ -120,7 +125,7 @@ def upload_to(uploadpath):
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
-        return render_template("upload.html", form_path="/files/upload/"+uploadpath, upload_path=uploadpath)
+        return render_template("upload.html", form_path="/admin/files/upload/"+uploadpath, upload_path=uploadpath)
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 
