@@ -81,7 +81,7 @@ def files():
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
     if check_path(path):
-        send_file(path, as_attachment=False)
+        return send_file(path, as_attachment=False)
     else:
         abort(404)
 
