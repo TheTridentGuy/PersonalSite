@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_file, abort
 from werkzeug.exceptions import HTTPException
 import json
 from pathlib import Path
@@ -36,6 +36,10 @@ def generate_dir(path: Path):
     return Directory(path=path.relative_to(FILE_SERVE_PATH), name=path.name, subdirs=subdirs, files=files)
 
 
+def check_path(path):
+    return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -71,7 +75,10 @@ def files():
 @app.route("/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
-    return send_from_directory(FILE_SERVE_PATH, path, as_attachment=False)
+    if check_path(path):
+        send_file(path, as_attachment=False)
+    else:
+        abort(404)
 
 
 @app.route("/admin/files/upload", methods=["POST", "GET"])
@@ -85,7 +92,10 @@ def upload():
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(file.filename)
                 assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-                file.save(save_path)
+                if check_path(save_path):
+                    file.save(save_path)
+                else:
+                    abort(400)
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
@@ -103,8 +113,10 @@ def upload_to(uploadpath):
                 while (Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)).exists():
                     file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
                 save_path = Path(FILE_SERVE_PATH)/Path(uploadpath)/Path(file.filename)
-                assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-                file.save(save_path)
+                if check_path(save_path):
+                    file.save(save_path)
+                else:
+                    abort(400)
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
@@ -115,7 +127,11 @@ def upload_to(uploadpath):
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     if e.code == 500:
-        return render_template("message.html", message="OwOopsie, something went wrong!", title="500 Internal Server Error")
+        return render_template("message.html", message="500: OwOopsie, something went wrong!", title="500 Internal Server Error")
+    elif e.code == 404:
+        return render_template("message.html", message="404: TwT, we couldn't find this page!", title="404 Not Found")
+    elif e.code == 400:
+        return render_template("message.html", message="400: OwOah there, stop trying to hack me!", title="400 Bad Request")
     else:
         return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}")
 
