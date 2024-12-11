@@ -41,7 +41,7 @@ def check_path(path):
     return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
 
 
-logging.basicConfig(filename="app.log",
+logging.basicConfig(filename=Path(__file__)/Path("app.log"),
                     filemode='w')
 logger = logging.getLogger()
 
