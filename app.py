@@ -104,7 +104,7 @@ def upload():
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
-        return render_template("upload.html", form_path="/admin/files/upload/", upload_path="/")
+        return render_template("upload.html", form_path="/admin/files/upload", upload_path="/")
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 
