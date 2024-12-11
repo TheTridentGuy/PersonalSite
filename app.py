@@ -5,6 +5,7 @@ from pathlib import Path
 import re
 import hashlib
 import secrets
+import logging
 
 app = Flask(__name__)
 CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
@@ -38,6 +39,26 @@ def generate_dir(path: Path):
 
 def check_path(path):
     return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
+
+
+logging.basicConfig(filename="app.log",
+                    filemode='w')
+logger = logging.getLogger()
+
+
+@app.before_request
+def log_request():
+    request_data = {
+        "remote_addr": request.remote_addr,
+        "method": request.method,
+        "url": request.url,
+        "headers": dict(request.headers),
+        "args": request.args.to_dict(),
+        "form": request.form.to_dict(),
+        "json": request.json,
+        "data": request.data.decode("utf-8"),
+    }
+    logger.info(request_data)
 
 
 @app.route("/")
