@@ -41,24 +41,23 @@ def check_path(path):
     return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
 
 
-logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"),
-                    filemode='w')
+logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
 logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 
-@app.before_request
-def log_request():
+@app.after_request
+def log_request(response):
     request_data = {
         "remote_addr": request.remote_addr,
         "method": request.method,
         "url": request.url,
-        "headers": dict(request.headers),
         "args": request.args.to_dict(),
         "form": request.form.to_dict(),
-        "json": request.json,
         "data": request.data.decode("utf-8"),
     }
     logger.info(request_data)
+    return response
 
 
 @app.route("/")
