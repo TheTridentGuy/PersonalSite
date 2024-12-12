@@ -9,6 +9,10 @@ import logging
 
 app = Flask(__name__)
 CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
+logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
+logging.getLogger().addHandler(logging.StreamHandler())
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 
 class File:
@@ -39,11 +43,6 @@ def generate_dir(path: Path):
 
 def check_path(path):
     return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-
-
-logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
 
 
 @app.after_request
