@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheTridentGuy</title>  
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="/static/preload.js"></script>
-</head>
-<body>
-    <div class="flex-col flex-grow">
-        <div class="flex-col flex-col-top" id="header">
-            <div class="flex-row">
-                <div class="flex-col flex-grow">
-                    <h1>> TheTridentGuy</h1>
-                    <div class="flex-row">
-                        <a href="/" class="menu-link">About Me</a>
-                        <a href="/projects" class="menu-link">Projects</a>
-                    </div>
-                </div>
-                <div class="flex-col">
-                    <input type="color" id="--main-color" class="flex-grow color-in" value="#00ff00">
-                    <input type="color" id="--main-bg" class="flex-grow color-in" value="#000000">
-                </div>
-            </div>
-        </div>
+{% extends "template.html" %}
+{% block title %}TheTridentGuy - Gaming{% endblock %}
+{% block main %}
         <div id="main-content" class="flex-grow">
             <h2>Gaming:</h2>
             <div class="flex-col">
@@ -78,7 +55,4 @@
                 </a>
             </div>
         </div>
-    </div>
-    <script src="/static/script.js"></script>
-</body>
-</html>
+{% endblock %}

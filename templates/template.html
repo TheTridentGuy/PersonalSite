@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheTridentGuy</title>  
+    <title>{% block title %}{% endblock %}</title>  
     <link rel="stylesheet" href="/static/styles.css">
     <script src="/static/preload.js"></script>
+    {% block head %}{% endblock %}
 </head>
 <body>
     <div class="flex-col flex-grow">
@@ -19,13 +20,20 @@
                     </div>
                 </div>
                 <div class="flex-col">
+                    <div class="flex-grow"></div>
+                    <div>
+                        Adjust the color theme here -&lt;
+                    </div>
+                    <div class="flex-grow"></div>
+                </div>
+                <div class="flex-col">
                     <input type="color" id="--main-color" class="flex-grow color-in" value="#00ff00">
                     <input type="color" id="--main-bg" class="flex-grow color-in" value="#000000">
                 </div>
             </div>
         </div>
-        <div id="main-content" class="flex-grow">
-
+        <div class="flex-col flex-grow">
+            {% block main %}{% endblock %}
         </div>
         <div class="flex-col flex-col-bot" id="footer">
             <div class="flex-row">
