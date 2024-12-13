@@ -63,14 +63,14 @@ body {
     display: flex;
     flex-direction: row;
 }
-.menu-link {
+.big-menu-link {
     text-decoration: none;
     padding: .5vmin;
     font-size: larger;
     border-radius: .5vmin;
     margin: .5vmin;
 }
-.menu-link:hover, button:hover {
+.big-menu-link:hover, button:hover {
     color: var(--main-bg);
     background-color: var(--main-color);
 }
