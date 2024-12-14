@@ -232,3 +232,14 @@ button, input {
     border: 1px solid var(--main-color);
     border-radius: 5px;
 }
+#more-menu {
+    align-items: center;
+}
+.menu-link {
+    font-family: terminess;
+    padding-right: 1vmin;
+    font-size: larger;
+}
+#mm-links {
+    display: none;
+}
