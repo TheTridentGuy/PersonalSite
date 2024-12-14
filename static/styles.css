@@ -233,6 +233,7 @@ button, input {
     border-radius: 5px;
 }
 #more-menu {
+    cursor: pointer;
     align-items: center;
 }
 .menu-link {
@@ -242,4 +243,7 @@ button, input {
 }
 #mm-links {
     display: none;
+}
+#more-menu:hover > #mm-links {
+    display: flex;
 }
