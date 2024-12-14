@@ -32,6 +32,9 @@ body {
     td:last-child {
         width: 100%;
     }
+    .breaker {
+        flex-basis: 100%;
+    }
 }
 .femboy {
     background-image: linear-gradient(
