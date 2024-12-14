@@ -91,12 +91,17 @@ def gaming():
 
 @app.route("/files")
 def files():
+    return render_template("files.html")
+
+
+@app.route("/public/files")
+def publicfiles():
     files = generate_dir(Path(FILE_SERVE_PATH))
     preview = True if request.values.get("preview") == "true" else False
-    return render_template("files.html", files=files, preview=preview)
+    return render_template("publicfiles.html", files=files, preview=preview)
 
 
-@app.route("/files/<path:filename>")
+@app.route("/public/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
     if check_path(path):
