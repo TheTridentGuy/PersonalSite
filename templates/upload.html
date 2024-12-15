@@ -1,15 +1,13 @@
 {% extends "template.html" %}
 {% block title %}TheTridentGuy - Upload files{% endblock %}
 {% block main %}
-    <div id="main-content" class="flex-grow">
-        <h2>Upload files to {{ upload_path }} (not for public use):</h2>
-        <div class="main-container flex-col">   
-            <form action="{{ form_path }}" method="post" enctype="multipart/form-data">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-                <input type="file" name="files" id="files" multiple>
-                <button type="submit">Upload Files</button>
-            </form>
-        </div> 
+    <h2>Upload files to {{ upload_path }} (not for public use):</h2>
+    <div class="main-container flex-col">   
+        <form action="{{ form_path }}" method="post" enctype="multipart/form-data">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <input type="file" name="files" id="files" multiple>
+            <button type="submit">Upload Files</button>
+        </form>
     </div>
 {% endblock %}

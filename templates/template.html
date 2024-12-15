@@ -42,7 +42,9 @@
             </div>
         </div>
         <div class="flex-col flex-grow">
-            {% block main %}{% endblock %}
+            <div id="main-content" class="flex-grow">
+                {% block main %}{% endblock %}
+            </div>
         </div>
         <div class="flex-col flex-col-bot" id="footer">
             <div class="flex-row">
