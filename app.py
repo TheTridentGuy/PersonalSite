@@ -153,6 +153,16 @@ def upload_to(uploadpath):
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
 
 
+@app.route("/card")
+def card():
+    return render_template("card.html")
+
+
+@app.route("/meow/jumpscare")
+def jumpscare():
+    return render_template("jumpscare.html")
+
+
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     if e.code == 500:

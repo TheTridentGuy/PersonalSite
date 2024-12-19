@@ -140,7 +140,7 @@ p {
 .no-bullet {
     list-style-type: none;
 }
-#prn-bar > span {
+.prn-bar > span {
     padding-left: 1vmin;
     padding-right: 1vmin;
 }
@@ -249,4 +249,14 @@ button, input {
 }
 #more-menu:hover > #mm-links {
     display: flex;
+}
+#card {
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    padding: 2vmin;
+}
+.pfp {
+    height: 10vmin;
+    width: 10vmin;
+    border-radius: 50%;
 }

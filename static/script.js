@@ -48,3 +48,14 @@ function toggle_preview(){
         window.location.replace(url.origin+url.pathname+url.search)
     }
 }
+if($("jumpscare")){
+fetch('https://api.nekosapi.com/v3/images/random?rating=safe&limit=1&tag=8')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const img = document.createElement('img');
+        img.src = data.items[0].image_url;
+        $("jumpscare").appendChild(img);
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
