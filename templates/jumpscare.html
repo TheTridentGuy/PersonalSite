@@ -12,4 +12,21 @@
         ^ This obviously isn't my art, it's all sourced from <a href="https://nekosapi.com/">NekosApi.com</a>. I'm not responsible for what comes out of their api.
         If you really liked a photo, theres a localStorage cookie with the URLs of all the images you've seen. You can find it in your browser's devtools.
     </p>
+    <script>
+        fetch("{{ api_url|safe }}")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const img = document.createElement('img');
+            img.src = data.items[0].image_url;
+            $("jumpscare").appendChild(img);
+
+            if(localStorage.getItem("catgirls_you_viewed")){
+                localStorage.setItem("catgirls_you_viewed", JSON.stringify([...JSON.parse(localStorage.getItem("catgirls_you_viewed")), img.src]))
+            }else{
+                localStorage.setItem("catgirls_you_viewed", JSON.stringify([img.src]))
+            }
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+    </script>
 {% endblock %}

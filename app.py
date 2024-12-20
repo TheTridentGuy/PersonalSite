@@ -158,9 +158,10 @@ def card():
     return render_template("card.html")
 
 
-@app.route("/meow/jumpscare")
+@app.route("/uwu")
 def jumpscare():
-    return render_template("jumpscare.html")
+    content_filter = request.values.get("filter")
+    return render_template("jumpscare.html", api_url=NEKO_API_ENDPOINTS[content_filter if content_filter else ""])
 
 
 @app.errorhandler(HTTPException)
@@ -179,5 +180,6 @@ with open(CONFIG_PATH, "r") as f:
     cfg = json.loads(f.read())
     FILE_SERVE_PATH = cfg.get("file_serve_path")
     UPLOAD_PASS_HASH = cfg.get("upload_pass_hash")
+    NEKO_API_ENDPOINTS = cfg.get("neko_api_endpoints")
     app.run(host=cfg.get("host"), port=cfg.get("port"), debug=cfg.get("debug"))
 

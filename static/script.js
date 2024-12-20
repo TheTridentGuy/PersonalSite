@@ -48,20 +48,3 @@ function toggle_preview(){
         window.location.replace(url.origin+url.pathname+url.search)
     }
 }
-if($("jumpscare")){
-fetch('https://api.nekosapi.com/v3/images/random?rating=safe&limit=1&tag=8')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        const img = document.createElement('img');
-        img.src = data.items[0].image_url;
-        $("jumpscare").appendChild(img);
-
-        if(localStorage.getItem("catgirls_you_viewed")){
-            localStorage.setItem("catgirls_you_viewed", JSON.stringify([...JSON.parse(localStorage.getItem("catgirls_you_viewed")), img.src]))
-        }else{
-            localStorage.setItem("catgirls_you_viewed", JSON.stringify([img.src]))
-        }
-    })
-    .catch(error => console.error('Error fetching JSON:', error));
-}
