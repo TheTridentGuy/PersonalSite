@@ -167,13 +167,13 @@ def jumpscare():
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     if e.code == 500:
-        return render_template("message.html", message="500: OwOopsie, something went wrong!", title="500 Internal Server Error")
+        return render_template("message.html", message="500: OwOopsie, something went wrong!", title="500 Internal Server Error"), e.code
     elif e.code == 404:
-        return render_template("message.html", message="404: TwT, we couldn't find this page!", title="404 Not Found")
+        return render_template("message.html", message="404: TwT, we couldn't find this page!", title="404 Not Found"), e.code
     elif e.code == 400:
-        return render_template("message.html", message="400: OwOah there, stop trying to hack me!", title="400 Bad Request")
+        return render_template("message.html", message="400: OwOah there, stop trying to hack me!", title="400 Bad Request"), e.code
     else:
-        return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}")
+        return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}"), e.code
 
 
 with open(CONFIG_PATH, "r") as f:
@@ -181,5 +181,6 @@ with open(CONFIG_PATH, "r") as f:
     FILE_SERVE_PATH = cfg.get("file_serve_path")
     UPLOAD_PASS_HASH = cfg.get("upload_pass_hash")
     NEKO_API_ENDPOINTS = cfg.get("neko_api_endpoints")
-    app.run(host=cfg.get("host"), port=cfg.get("port"), debug=cfg.get("debug"))
 
+if __name__ == "__main__":
+    app.run(host=cfg.get("host"), port=cfg.get("port"), debug=True)

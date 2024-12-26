@@ -1,10 +1,10 @@
 {
     "host": "0.0.0.0",
     "port": 8081,
-    "debug": true,
     "file_serve_path": "C:\\Users\\aiden\\Desktop",
     "upload_pass_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
     "neko_api_endpoints": {
-        "": "https://api.nekosapi.com/v3/images/random?rating=safe&limit=1&tag=8"
+        "": "https://api.nekosapi.com/v3/images/random?rating=safe&limit=1&tag=8",
+        "all": "https://api.nekosapi.com/v3/images/random?limit=1&tag=8"
     }
 }
