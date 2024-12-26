@@ -2,7 +2,7 @@
 Description=personalsite
 
 [Service]
-ExecStart=/usr/local/bin/python3.13 /home/httpadmin/PersonalSite/app.py
+ExecStart=/home/username/server/script.sh
 Restart=on-failure
 RestartSec=60
 
