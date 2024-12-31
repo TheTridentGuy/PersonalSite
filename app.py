@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, send_file, abort
 from werkzeug.exceptions import HTTPException
+import flask_login
 import json
 from pathlib import Path
 import re
@@ -8,11 +9,14 @@ import secrets
 import logging
 
 app = Flask(__name__)
-CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
 logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
 logging.getLogger().addHandler(logging.StreamHandler())
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
+app.secret_key = secrets.token_hex(16)
+login_manager = flask_login.LoginManager()
+# login_manager.init_app(app)
 
 
 class File:
@@ -29,6 +33,7 @@ class Directory:
         self.name = name
         self.subdirs = subdirs
         self.files = files
+
 
 def generate_dir(path: Path):
     files = []
@@ -110,30 +115,8 @@ def file_path(filename):
         abort(404)
 
 
-@app.route("/admin/files/upload", methods=["POST", "GET"])
-def upload():
-    if request.method == "POST":
-        password = request.values.get("password")
-        if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
-            files = request.files.getlist("files")
-            for file in files:
-                while (Path(FILE_SERVE_PATH)/Path(file.filename)).exists():
-                    file.filename=re.sub(r"(?=\.\w+$)|$", "-"+secrets.token_hex(4), file.filename, count=1)
-                save_path = Path(FILE_SERVE_PATH)/Path(file.filename)
-                assert save_path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-                if check_path(save_path):
-                    file.save(save_path)
-                else:
-                    abort(400)
-        else:
-            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
-    else:
-        return render_template("upload.html", form_path="/admin/files/upload", upload_path="/")
-    return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
-
-
-@app.route("/admin/files/upload/<path:uploadpath>", methods=["POST", "GET"])
-def upload_to(uploadpath):
+@app.route("/admin/public/files/upload", methods=["POST", "GET"])
+def upload(uploadpath=""):
     if request.method == "POST":
         password = request.values.get("password")
         if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
@@ -149,8 +132,13 @@ def upload_to(uploadpath):
         else:
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
-        return render_template("upload.html", form_path="/admin/files/upload/"+uploadpath, upload_path=uploadpath)
+        return render_template("upload.html", form_path="/admin/public/files/upload"+("/"+uploadpath) if uploadpath else "", upload_path=uploadpath if uploadpath else "/")
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
+
+
+@app.route("/admin/public/files/upload/<path:uploadpath>", methods=["POST", "GET"])
+def upload_to(uploadpath):
+    return upload(uploadpath)
 
 
 @app.route("/card")
@@ -162,6 +150,23 @@ def card():
 def jumpscare():
     content_filter = request.values.get("filter")
     return render_template("jumpscare.html", api_url=NEKO_API_ENDPOINTS[content_filter if content_filter else ""])
+
+@app.route("/blahaj")
+def blahaj():
+    return render_template("blahaj.html")
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == "POST":
+        password = request.values.get("password")
+        if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
+            user = flask_login.UserMixin()
+            flask_login.login_user(user)
+            return render_template("message.html", message="Logged in successfully!", title="TheTridentGuy - Login Successful")
+        else:
+            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
+    else:
+        return render_template("login.html")
 
 
 @app.errorhandler(HTTPException)

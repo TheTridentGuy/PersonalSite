@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %} TheTridentGuy - Blahaj pics {% endblock %}
+{% block main %}
+    <h2>Blahaj pics:</h2>
+    <div class="main-container">
+        <p>I am a proud owner of the <a href="https://www.ikea.com/us/en/p/blahaj-soft-toy-shark-90373590/">best plushie in the world</a></p>
+    </div>    
+    <div class="flex-row">
+        {% for caption, img_url in img_data %}
+            <div class="flex-col">  
+                <img src="{{ img_url }}">
+                <span></span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
