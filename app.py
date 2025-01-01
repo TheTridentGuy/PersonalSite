@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file, abort
+from flask import Flask, request, render_template, send_file, abort, url_for
 from werkzeug.exceptions import HTTPException
 import flask_login
 import json
@@ -109,7 +109,7 @@ def publicfiles():
 @app.route("/public/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
-    if check_path(path):
+    if check_path(path) and path.exists():
         return send_file(path, as_attachment=False)
     else:
         abort(404)
@@ -153,7 +153,8 @@ def jumpscare():
 
 @app.route("/blahaj")
 def blahaj():
-    return render_template("blahaj.html")
+    return render_template("blahaj.html", img_data=[(caption, img_url) for caption, img_url in BLAHAJ_IMG_DATA])
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
@@ -186,6 +187,7 @@ with open(CONFIG_PATH, "r") as f:
     FILE_SERVE_PATH = cfg.get("file_serve_path")
     UPLOAD_PASS_HASH = cfg.get("upload_pass_hash")
     NEKO_API_ENDPOINTS = cfg.get("neko_api_endpoints")
+    BLAHAJ_IMG_DATA = cfg.get("blahaj_img_data")
 
 if __name__ == "__main__":
     app.run(host=cfg.get("host"), port=cfg.get("port"), debug=True)

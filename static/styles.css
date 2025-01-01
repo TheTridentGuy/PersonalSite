@@ -264,3 +264,15 @@ button, input {
     height: 75vmin;
     padding: 2vmin;
 }
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.blahaj-img {
+    max-height: 50vh;
+}
+figcaption {
+    font-family: terminess;
+    font-size: smaller;
+}

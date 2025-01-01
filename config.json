@@ -6,5 +6,12 @@
     "neko_api_endpoints": {
         "": "https://api.nekosapi.com/v3/images/random?rating=safe&limit=1&tag=8",
         "all": "https://api.nekosapi.com/v3/images/random?limit=1&tag=8"
-    }
+    },
+    "blahaj_img_data": [
+        ["Blahaj!", "cb.jpg"],
+        ["Blahaj!", "0100.jpg"],
+        ["Blahaj!", "archinstall.jpg"],
+        ["Blahaj!", "hug.jpg"],
+        ["Blahaj!", "shork.jpg"]
+    ]
 }
