@@ -53,7 +53,10 @@ def check_path(path):
 @app.after_request
 def log_request(response):
     request_data = {
+        "user_agent": request.user_agent.string,
         "remote_addr": request.remote_addr,
+        "x-forwarded-for": request.headers.get("X-Forwarded-For"),
+        "x-real-ip": request.headers.get("X-Real-IP"),
         "method": request.method,
         "url": request.url,
         "args": request.args.to_dict(),
@@ -147,9 +150,9 @@ def card():
 
 
 @app.route("/uwu")
-def jumpscare():
+def uwu():
     content_filter = request.values.get("filter")
-    return render_template("jumpscare.html", api_url=NEKO_API_ENDPOINTS[content_filter if content_filter else ""])
+    return render_template("uwu.html", api_url=NEKO_API_ENDPOINTS[content_filter if content_filter else ""])
 
 @app.route("/blahaj")
 def blahaj():
