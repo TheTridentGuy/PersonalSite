@@ -8,12 +8,15 @@ import hashlib
 import secrets
 import logging
 
+
+from config import HOST, PORT, FILE_SERVE_PATH, UPLOAD_PASS_HASH, NEKO_API_ENDPOINTS, BLAHAJ_IMG_DATA
+
+
 app = Flask(__name__)
 logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
 logging.getLogger().addHandler(logging.StreamHandler())
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-CONFIG_PATH = Path(__file__).parent.resolve()/Path("config.json")
 app.secret_key = secrets.token_hex(16)
 login_manager = flask_login.LoginManager()
 # login_manager.init_app(app)
@@ -54,9 +57,9 @@ def check_path(path):
 def log_request(response):
     request_data = {
         "user_agent": request.user_agent.string,
-        "remote_addr": request.remote_addr,
-        "x-forwarded-for": request.headers.get("X-Forwarded-For"),
         "x-real-ip": request.headers.get("X-Real-IP"),
+        "x-forwarded-for": request.headers.get("X-Forwarded-For"),
+        "remote_addr": request.remote_addr,
         "method": request.method,
         "url": request.url,
         "args": request.args.to_dict(),
@@ -173,6 +176,16 @@ def login():
         return render_template("login.html")
 
 
+@app.route("/blog")
+def blog():
+    return render_template("blog.html")
+
+
+@app.route("/blog/<path:filepath>")
+def blog_article(filepath):
+    return render_template(f"blog/{filepath}.html")
+
+
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     if e.code == 500:
@@ -185,12 +198,5 @@ def handle_exception(e):
         return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}"), e.code
 
 
-with open(CONFIG_PATH, "r") as f:
-    cfg = json.loads(f.read())
-    FILE_SERVE_PATH = cfg.get("file_serve_path")
-    UPLOAD_PASS_HASH = cfg.get("upload_pass_hash")
-    NEKO_API_ENDPOINTS = cfg.get("neko_api_endpoints")
-    BLAHAJ_IMG_DATA = cfg.get("blahaj_img_data")
-
 if __name__ == "__main__":
-    app.run(host=cfg.get("host"), port=cfg.get("port"), debug=True)
+    app.run(host=HOST, port=PORT, debug=True)
