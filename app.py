@@ -8,9 +8,7 @@ import hashlib
 import secrets
 import logging
 
-
 from config import HOST, PORT, FILE_SERVE_PATH, UPLOAD_PASS_HASH, NEKO_API_ENDPOINTS, BLAHAJ_IMG_DATA, DEBUG
-
 
 app = Flask(__name__)
 logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), filemode="a")
@@ -69,6 +67,7 @@ def log_request(response):
     logger.info(request_data)
     return response
 
+# Static routes
 
 @app.route("/")
 def index():
@@ -103,6 +102,14 @@ def gaming():
 @app.route("/files")
 def files():
     return render_template("files.html")
+
+@app.route("/card")
+def card():
+    return render_template("card.html")
+
+@app.route("/blog")
+def blog():
+    return render_template("blog.html")
 
 
 @app.route("/public/files")
@@ -147,11 +154,6 @@ def upload_to(uploadpath):
     return upload(uploadpath)
 
 
-@app.route("/card")
-def card():
-    return render_template("card.html")
-
-
 @app.route("/uwu")
 def uwu():
     content_filter = request.values.get("filter")
@@ -174,11 +176,6 @@ def login():
             return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
     else:
         return render_template("login.html")
-
-
-@app.route("/blog")
-def blog():
-    return render_template("blog.html")
 
 
 @app.route("/blog/<path:filepath>")
