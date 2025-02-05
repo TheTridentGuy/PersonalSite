@@ -74,6 +74,18 @@ function end() {
   `;
 }
 
+function theme() {
+  const mainColor = localStorage.getItem("--main-color");
+  const mainBg = localStorage.getItem("--main-bg");
+
+  if (mainColor) {
+    document.documentElement.style.setProperty("--main-color", mainColor);
+  }
+  if (mainBg) {
+    document.documentElement.style.setProperty("--main-bg", mainBg);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const songId = parseInt(info("id"), 10);
   const song = snd(songId);
@@ -90,9 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const audio = document.getElementById("audio");
   audio.addEventListener("ended", end);
-});
 
-// other site functions like theme
+  // detect theme change
+  window.addEventListener("storage", (event) => {
+    if (event.key === "--main-color" || event.key === "--main-bg") {
+      theme();
+    }
+  });
+});
 
 // preload.js
 function $(id) {
