@@ -1,278 +1,292 @@
 @font-face {
-    font-family: pro;
-    src: url(ProFontIIxNerdFont-Regular.ttf);
+  font-family: pro;
+  src: url(ProFontIIxNerdFont-Regular.ttf);
 }
 @font-face {
-    font-family: terminess;
-    src: url(TerminessNerdFont-Regular.ttf);
+  font-family: terminess;
+  src: url(TerminessNerdFont-Regular.ttf);
 }
 :root {
-    --main-color: #0f0;
-    --main-bg: #000;
+  --main-color: #0f0;
+  --main-bg: #000;
 }
 body {
-    min-height: 100vh;
-    display: flex;
-    margin: 0;
-    background-color: var(--main-bg);
+  min-height: 100vh;
+  display: flex;
+  margin: 0;
+  background-color: var(--main-bg);
 }
 * {
-    color-scheme: dark;
-    font-family: pro;
-    color: var(--main-color);
+  color-scheme: dark;
+  font-family: pro;
+  color: var(--main-color);
 }
 @media screen and (max-width: 600px) {
-    * {
-        flex-wrap: wrap;
-    }
-    table {
-        flex-grow: 1;
-        table-layout: fixed;
-    }
-    td:last-child {
-        width: 100%;
-    }
-    .breaker {
-        flex-basis: 100%;
-    }
+  * {
+    flex-wrap: wrap;
+  }
+  table {
+    flex-grow: 1;
+    table-layout: fixed;
+  }
+  td:last-child {
+    width: 100%;
+  }
+  .breaker {
+    flex-basis: 100%;
+  }
 }
 .femboy {
-    background-image: linear-gradient(
-  #cf62a9 14.28%,
-  #e4adcd 14.28%,
-  #e4adcd 28.57%,
-  #ffffff 28.57%,
-  #ffffff 42.85%,
-  #58cef8 42.85%,
-  #58cef8 57.14%,
-  #ffffff 57.14%,
-  #ffffff 71.42%,
-  #e4adcd 71.42%,
-  #e4adcd 85.71%,
-  #cf62a9 85.71%,
-  #cf62a9
+  background-image: linear-gradient(
+    #cf62a9 14.28%,
+    #e4adcd 14.28%,
+    #e4adcd 28.57%,
+    #ffffff 28.57%,
+    #ffffff 42.85%,
+    #58cef8 42.85%,
+    #58cef8 57.14%,
+    #ffffff 57.14%,
+    #ffffff 71.42%,
+    #e4adcd 71.42%,
+    #e4adcd 85.71%,
+    #cf62a9 85.71%,
+    #cf62a9
   );
 }
 .femboy * {
-    color: #000 !important;
-    border-color: #000 !important;
-    background-color: transparent !important;
+  color: #000 !important;
+  border-color: #000 !important;
+  background-color: transparent !important;
 }
 .flex-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .big-menu-link {
-    text-decoration: none;
-    padding: .5vmin;
-    font-size: larger;
-    border-radius: .5vmin;
-    margin: .5vmin;
+  text-decoration: none;
+  padding: 0.5vmin;
+  font-size: larger;
+  border-radius: 0.5vmin;
+  margin: 0.5vmin;
 }
-.big-menu-link:hover, button:hover {
-    color: var(--main-bg);
-    background-color: var(--main-color);
+.big-menu-link:hover,
+button:hover {
+  color: var(--main-bg);
+  background-color: var(--main-color);
 }
 h1 {
-    font-family: terminess;
+  font-family: terminess;
 }
 .flex-col-top {
-    flex-direction: column;
+  flex-direction: column;
 }
 .flex-col-bot {
-    flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 .flex-grow {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 .icon {
-    display: inline-flex;
-    align-self: center;
+  display: inline-flex;
+  align-self: center;
 }
-.icon svg, .icon img {
-    height: 1em;
-    width: 1em;
-    fill: currentColor;
+.icon svg,
+.icon img {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
 }
-.icon.baseline svg, .icon img {
-    top: 0;
-    position: relative;
-    padding-right: .2em;
+.icon.baseline svg,
+.icon img {
+  top: 0;
+  position: relative;
+  padding-right: 0.2em;
 }
 .footer-link {
-    font-family: terminess;
-    text-decoration: none;
-    padding-right: 1vmin;
+  font-family: terminess;
+  text-decoration: none;
+  padding-right: 1vmin;
 }
 #main-content {
-    border: 2px solid var(--main-color);
-    border-left: none;
-    border-right: none;
+  border: 2px solid var(--main-color);
+  border-left: none;
+  border-right: none;
 }
 h2 {
-    font-family: terminess;
+  font-family: terminess;
 }
-h1, h2, h3 {
-    margin: 1vmin;
-    margin-top: 1vmin;
-    margin-bottom: 1vmin;
+h1,
+h2,
+h3 {
+  margin: 1vmin;
+  margin-top: 1vmin;
+  margin-bottom: 1vmin;
 }
 p {
-    font-family: terminess;
+  font-family: terminess;
 }
 .main-container {
-    margin-left: 1.5vmin;
-    margin-right: 1.5vmin;
+  margin-left: 1.5vmin;
+  margin-right: 1.5vmin;
 }
 #bio {
-    margin-left: 1.5vmin;
-    margin-right: 1.5vmin;
-    font-size: larger;
+  margin-left: 1.5vmin;
+  margin-right: 1.5vmin;
+  font-size: larger;
 }
-#bio-sidebar, #fur-sidebar, #blog-sidebar {
-    min-width: 25vw;
-    padding: 1vmin;
+#bio-sidebar,
+#fur-sidebar,
+#blog-sidebar {
+  min-width: 25vw;
+  padding: 1vmin;
 }
 .no-bullet {
-    list-style-type: none;
+  list-style-type: none;
 }
 .prn-bar > span {
-    padding-left: 1vmin;
-    padding-right: 1vmin;
+  padding-left: 1vmin;
+  padding-right: 1vmin;
 }
 .right-bar {
-    border-right: 2px solid var(--main-color);
+  border-right: 2px solid var(--main-color);
 }
-table{
-    font-size: medium;
-    border: 1px solid var(--main-color);
+table {
+  font-size: medium;
+  border: 1px solid var(--main-color);
 }
-table, tr {
-    margin: none;
-    padding: none;
+table,
+tr {
+  margin: none;
+  padding: none;
 }
 td {
-    padding-right: 1vmin;
+  padding-right: 1vmin;
 }
 td:first-child {
-    border-right: 1px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
 }
 .color-in {
-    border: none;
+  border: none;
 }
-p > span, i, b {
-    font-family: terminess;
+p > span,
+i,
+b {
+  font-family: terminess;
 }
 #about {
-    padding: 1.5vmin;
+  padding: 1.5vmin;
 }
 a:hover {
-    text-decoration-style: wavy;
+  text-decoration-style: wavy;
 }
 input {
-    background-color: var(--main-bg);
+  background-color: var(--main-bg);
 }
-#rootul div, #rootul {
-    flex-wrap: wrap;
-    list-style-type: none;
+#rootul div,
+#rootul {
+  flex-wrap: wrap;
+  list-style-type: none;
 }
 #rootul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .caret {
-    cursor: pointer;
-    user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 .caret::before {
-    content: "\25B6";
-    margin-right: 6px;
-    display: inline-block;
+  content: "\25B6";
+  margin-right: 6px;
+  display: inline-block;
 }
 .caret-down::before {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .nested {
-    padding-left: 2vw;
-    display: none;
+  padding-left: 2vw;
+  display: none;
 }
 .active {
-    padding-left: 2vw;
-    display: block;
+  padding-left: 2vw;
+  display: block;
 }
-#rootul img, svg, video {
-    fill: currentColor;
-    object-fit: contain;
-    object-position: center; 
-    width: 10vw;
-    max-width: 10vw;
-    height: 14vw;
+#rootul img,
+svg,
+video {
+  fill: currentColor;
+  object-fit: contain;
+  object-position: center;
+  width: 10vw;
+  max-width: 10vw;
+  height: 14vw;
 }
 .file-box {
-    width: 10vw;
-    max-width: 10vw;
-    margin: 1vmin;
-    flex-wrap: wrap;
-    overflow-wrap: anywhere;
+  width: 10vw;
+  max-width: 10vw;
+  margin: 1vmin;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
 }
 .file-box a {
-    font-family: terminess;
-    font-size: smaller;
+  font-family: terminess;
+  font-size: smaller;
 }
 .file-row {
-    font-family: terminess;
-    font-size: small;
+  font-family: terminess;
+  font-size: small;
 }
 a {
-    width: fit-content;
+  width: fit-content;
 }
-button, input {
-    background-color: var(--main-bg);
-    border: 1px solid var(--main-color);
-    border-radius: 5px;
+button,
+input {
+  background-color: var(--main-bg);
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
 }
 #more-menu {
-    cursor: pointer;
-    align-items: center;
+  cursor: pointer;
+  align-items: center;
 }
 .menu-link {
-    font-family: terminess;
-    padding-right: 1vmin;
-    font-size: larger;
+  font-family: terminess;
+  padding-right: 1vmin;
+  font-size: larger;
 }
 #mm-links {
-    display: none;
+  display: none;
 }
 #more-menu:hover > #mm-links {
-    display: flex;
+  display: flex;
 }
 #card {
-    border: 2px solid var(--main-color);
-    border-radius: 5px;
-    padding: 2vmin;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  padding: 2vmin;
 }
 .pfp {
-    height: 10vmin;
-    width: 10vmin;
-    border-radius: 50%;
+  height: 10vmin;
+  width: 10vmin;
+  border-radius: 50%;
 }
 #jumpscare img {
-    height: 75vmin;
-    padding: 2vmin;
+  height: 75vmin;
+  padding: 2vmin;
 }
 .image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .blahaj-img {
-    max-height: 50vh;
+  max-height: 50vh;
 }
 figcaption {
-    font-family: terminess;
-    font-size: smaller;
+  font-family: terminess;
+  font-size: smaller;
 }
