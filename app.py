@@ -77,6 +77,10 @@ def index():
 
 @app.route("/ip")
 def ip():
+    if request.headers.get("X-Real-IP"):
+        return request.headers.get("X-Real-IP")
+    elif request.headers.get("X-Forwarded-For"):
+        return request.headers.get("X-Forwarded-For").split(",")[0]
     return request.remote_addr
 
 
@@ -98,6 +102,11 @@ def about():
 @app.route("/gaming")
 def gaming():
     return render_template("gaming.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 
 @app.route("/files")
