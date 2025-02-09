@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, send_file, abort, url_for
 from werkzeug.exceptions import HTTPException
 import flask_login
-import json
 from pathlib import Path
 import re
 import hashlib
