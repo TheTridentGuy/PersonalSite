@@ -1,4 +1,8 @@
 # PersonalSite
+> ## Other ships I'm proud of:
+> - Bot that my team uses to keep track of hours: https://github.com/TheTridentGuy/SlackSignInBot
+> - A fun little userscript that I made for Slack: https://github.com/TheTridentGuy/SlackCuddles
+> - A fun site I made for a friend, and scored surprisingly well in High Seas: https://github.com/TheTridentGuy/DecryptThis
 Source code for my personal site, using a Flask backend and vanilla HTML, CSS and JS frontend
 ## I'm currently self-hosting at [https://thetridentguy.com](https://thetridentguy.com), [https://thetridentguy.xyz](https://thetridentguy.xyz), [https://plscuddle.me](https://plscuddle.me)
 ## Latest update (filesystem) is here [https://thetridentguy.xyz/files](https://thetridentguy.xyz/files)
