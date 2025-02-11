@@ -1,9 +1,9 @@
 # PersonalSite
 > ## Other ships I'm proud of:
-> - Bot that my team uses to keep track of hours: https://github.com/TheTridentGuy/SlackSignInBot
+> - Bot that my robotics team uses to keep track of hours: https://github.com/TheTridentGuy/SlackSignInBot
 > - A fun little userscript that I made for Slack: https://github.com/TheTridentGuy/SlackCuddles
 > - A fun site I made for a friend, and scored surprisingly well in High Seas: https://github.com/TheTridentGuy/DecryptThis
-> ## Ideas for scrpyard:
+> ## Ideas for scrapyard:
 > - Open-source contribution goal tracker: I want to start contributing to more projects, so I'd like to build a display that I can keep on my wall that can track my goals, i.e. 1 commit per day, and 1 PR per week.
 > - Extension of my trail and boreal projects.
 
