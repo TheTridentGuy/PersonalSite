@@ -6,7 +6,7 @@
 > ## What I want to build at scrapyard:
 > - Relationships with my fellow hackers.
 > - Open-source contribution goal tracker: I want to start contributing to more projects, so I'd like to build a display that I can keep on my wall that can track my goals, i.e. 1 commit per day, and 1 PR per week.
-> - Extension of my trail and boreal projects.
+> - Extension of my trail and boreal projects, since those got cut short :(
 
 Source code for my personal site, using a Flask backend and vanilla HTML, CSS and JS frontend
 ## I'm currently self-hosting at [https://thetridentguy.com](https://thetridentguy.com), [https://thetridentguy.xyz](https://thetridentguy.xyz), [https://plscuddle.me](https://plscuddle.me)
