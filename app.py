@@ -124,7 +124,7 @@ def music():
     id = request.args.get('id')
     return render_template('music.html', id=id)
 
-
+@app.route("/f")
 @app.route("/public/files")
 def publicfiles():
     files = generate_dir(Path(FILE_SERVE_PATH))
@@ -132,6 +132,7 @@ def publicfiles():
     return render_template("publicfiles.html", files=files, preview=preview)
 
 
+@app.route("/f/<path:filename>")
 @app.route("/public/files/<path:filename>")
 def file_path(filename):
     path = Path(FILE_SERVE_PATH)/Path(filename)
@@ -141,6 +142,7 @@ def file_path(filename):
         abort(404)
 
 
+@app.route("/admin/public/files/upload/<path:uploadpath>", methods=["POST", "GET"])
 @app.route("/admin/public/files/upload", methods=["POST", "GET"])
 def upload(uploadpath=""):
     if request.method == "POST":
@@ -160,11 +162,6 @@ def upload(uploadpath=""):
     else:
         return render_template("upload.html", form_path="/admin/public/files/upload"+("/"+uploadpath) if uploadpath else "", upload_path=uploadpath if uploadpath else "/")
     return render_template("message.html", message="File(s) uploaded succesfully!", title="TheTridentGuy - Upload Successful")
-
-
-@app.route("/admin/public/files/upload/<path:uploadpath>", methods=["POST", "GET"])
-def upload_to(uploadpath):
-    return upload(uploadpath)
 
 
 @app.route("/uwu")
