@@ -119,10 +119,10 @@ def card():
 def blog():
     return render_template("blog.html")
 
-@app.route('/music')
+@app.route("/music")
 def music():
-    id = request.args.get('id')
-    return render_template('music.html', id=id)
+    id = request.args.get("id")
+    return render_template("music.html", id=id)
 
 @app.route("/f")
 @app.route("/public/files")
