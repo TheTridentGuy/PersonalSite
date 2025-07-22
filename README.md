@@ -1,7 +1,6 @@
 # PersonalSite
 Source code for my personal site, using a Flask backend and vanilla HTML, CSS and JS frontend
-## I'm currently self-hosting at [https://thetridentguy.com](https://thetridentguy.com), [https://thetridentguy.xyz](https://thetridentguy.xyz), [https://plscuddle.me](https://plscuddle.me)
-## Latest update (filesystem) is here [https://thetridentguy.xyz/files](https://thetridentguy.xyz/files)
+## I'm currently self-hosting at [https://thetridentguy.com](https://thetridentguy.com).
 - ~~HTTP-only until I set up certs~~
 - If it's down, bear with me, and skip on voting for this matchup (unless of course, it's obvious that my site is better)
 ## Site Features:
