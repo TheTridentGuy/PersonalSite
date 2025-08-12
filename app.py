@@ -1,10 +1,8 @@
 from flask import Flask, request, render_template, send_file, abort, url_for
 from werkzeug.exceptions import HTTPException
-import flask_login
 from pathlib import Path
 import re
 import hashlib
-import secrets
 import logging
 
 from config import HOST, PORT, FILE_SERVE_PATH, UPLOAD_PASS_HASH, NEKO_API_ENDPOINTS, BLAHAJ_IMG_DATA, DEBUG
@@ -14,9 +12,6 @@ logging.basicConfig(filename=Path(__file__).parent.resolve()/Path("app.log"), fi
 logging.getLogger().addHandler(logging.StreamHandler())
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-app.secret_key = secrets.token_hex(16)
-login_manager = flask_login.LoginManager()
-# login_manager.init_app(app)
 
 
 class File:
@@ -172,20 +167,6 @@ def uwu():
 @app.route("/blahaj")
 def blahaj():
     return render_template("blahaj.html", img_data=[(caption, img_url) for caption, img_url in BLAHAJ_IMG_DATA])
-
-
-@app.route("/login", methods=["POST", "GET"])
-def login():
-    if request.method == "POST":
-        password = request.values.get("password")
-        if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
-            user = flask_login.UserMixin()
-            flask_login.login_user(user)
-            return render_template("message.html", message="Logged in successfully!", title="TheTridentGuy - Login Successful")
-        else:
-            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here", title="401 Unauthorized"), 401
-    else:
-        return render_template("login.html")
 
 
 @app.route("/blog/<path:filepath>")
