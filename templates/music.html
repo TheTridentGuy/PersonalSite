@@ -1,10 +1,10 @@
 <head>
-  <link rel="stylesheet" href="/static/styles.css" />
-  <script src="/static/music/handler.js"></script>
+    <link rel="stylesheet" href="/static/styles.css"/>
+    <script src="/static/music/handler.js"></script>
 </head>
 <body style="margin: 0">
-  <div
-    style="
+<div
+        style="
       width: 100%;
       height: 80px;
       background-color: #1f1f1f;
@@ -14,14 +14,14 @@
       padding: 0 10px;
       box-sizing: border-box;
     "
-  >
+>
     <img
-      id="cover"
-      alt="Cover art"
-      style="height: 64px; width: 64px; border-radius: 5px"
+            id="cover"
+            alt="Cover art"
+            style="height: 64px; width: 64px; border-radius: 5px"
     />
     <div
-      style="
+            style="
         flex-grow: 1;
         margin-left: 10px;
         display: flex;
@@ -29,14 +29,14 @@
         justify-content: flex-start;
       "
     >
-      <div
-        id="title"
-        style="font-size: 14px; font-weight: bold; margin-bottom: 2px"
-      ></div>
-      <div id="artist" style="font-size: 12px"></div>
+        <div
+                id="title"
+                style="font-size: 14px; font-weight: bold; margin-bottom: 2px"
+        ></div>
+        <div id="artist" style="font-size: 12px"></div>
     </div>
     <button
-      style="
+            style="
         color: #1f1f1f;
         background-color: rgba(0, 0, 0, 0);
         border: none;
@@ -46,18 +46,18 @@
         height: 100%;
       "
     >
-      <svg
-        data-encore-id="icon"
-        role="img"
-        aria-hidden="false"
-        viewBox="0 0 24 24"
-      >
-        <title>Play</title>
-        <path
-          d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.75-4.567a.5.5 0 0 0-.75.433v8.268a.5.5 0 0 0 .75.433l7.161-4.134a.5.5 0 0 0 0-.866L9.75 7.433z"
-        ></path>
-      </svg>
+        <svg
+                data-encore-id="icon"
+                role="img"
+                aria-hidden="false"
+                viewBox="0 0 24 24"
+        >
+            <title>Play</title>
+            <path
+                    d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.75-4.567a.5.5 0 0 0-.75.433v8.268a.5.5 0 0 0 .75.433l7.161-4.134a.5.5 0 0 0 0-.866L9.75 7.433z"
+            ></path>
+        </svg>
     </button>
     <audio id="audio" controls style="display: none"></audio>
-  </div>
+</div>
 </body>

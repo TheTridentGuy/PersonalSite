@@ -7,7 +7,7 @@ from pathlib import Path
 from flask import Flask, request, render_template, send_file, abort
 from werkzeug.exceptions import HTTPException
 
-from config import HOST, PORT, FILE_SERVE_PATH, UPLOAD_PASS_HASH, NEKO_API_ENDPOINTS, BLAHAJ_IMG_DATA, DEBUG
+from config import HOST, PORT, FILE_SERVE_PATH, UPLOAD_PASS_HASH, NEKO_API_ENDPOINTS, BLAHAJ_IMG_DATA
 
 app = Flask(__name__)
 logging.basicConfig(filename=Path(__file__).parent.resolve() / Path("app.log"), filemode="a")
@@ -80,7 +80,7 @@ def blog():
 
 @app.route("/music")
 def music():
-    id_ = request.args.get("id_")
+    id_ = request.args.get("id")
     return render_template("music.html", id=id_)
 
 
@@ -108,7 +108,3 @@ def handle_exception(e):
                                title="400 Bad Request"), e.code
     else:
         return render_template("message.html", message=f"{e.code}: {e.name}", title=f"{e.code}: {e.name}"), e.code
-
-
-if __name__ == "__main__":
-    app.run(host=HOST, port=PORT, debug=DEBUG)
