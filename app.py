@@ -16,37 +16,6 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-class File:
-    def __init__(self, path, name):
-        self.is_dir = False
-        self.path = path
-        self.name = name
-
-
-class Directory:
-    def __init__(self, path, name, subdirs=(), files=()):
-        self.path = path
-        self.is_dir = True
-        self.name = name
-        self.subdirs = subdirs
-        self.files = files
-
-
-def generate_dir(path: Path):
-    files = []
-    subdirs = []
-    for file in sorted(path.iterdir()):
-        if file.is_dir():
-            subdirs.append(generate_dir(file))
-        else:
-            files.append(File(path=(path / file).relative_to(FILE_SERVE_PATH), name=file.name))
-    return Directory(path=path.relative_to(FILE_SERVE_PATH), name=path.name, subdirs=subdirs, files=files)
-
-
-def check_path(path):
-    return path.resolve().is_relative_to(Path(FILE_SERVE_PATH))
-
-
 @app.after_request
 def log_request(response):
     request_data = {
@@ -99,11 +68,6 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/files")
-def files():
-    return render_template("files.html")
-
-
 @app.route("/card")
 def card():
     return render_template("card.html")
@@ -116,52 +80,8 @@ def blog():
 
 @app.route("/music")
 def music():
-    id = request.args.get("id")
-    return render_template("music.html", id=id)
-
-
-@app.route("/f")
-@app.route("/public/files")
-def publicfiles():
-    files = generate_dir(Path(FILE_SERVE_PATH))
-    preview = True if request.values.get("preview") == "true" else False
-    return render_template("publicfiles.html", files=files, preview=preview)
-
-
-@app.route("/f/<path:filename>")
-@app.route("/public/files/<path:filename>")
-def file_path(filename):
-    path = Path(FILE_SERVE_PATH) / Path(filename)
-    if check_path(path) and path.exists():
-        return send_file(path, as_attachment=False)
-    else:
-        abort(404)
-
-
-@app.route("/admin/public/files/upload/<path:uploadpath>", methods=["POST", "GET"])
-@app.route("/admin/public/files/upload", methods=["POST", "GET"])
-def upload(uploadpath=""):
-    if request.method == "POST":
-        password = request.values.get("password")
-        if password and hashlib.sha256(password.encode("utf-8")).hexdigest() == UPLOAD_PASS_HASH:
-            files = request.files.getlist("files")
-            for file in files:
-                while (Path(FILE_SERVE_PATH) / Path(uploadpath) / Path(file.filename)).exists():
-                    file.filename = re.sub(r"(?=\.\w+$)|$", "-" + secrets.token_hex(4), file.filename, count=1)
-                save_path = Path(FILE_SERVE_PATH) / Path(uploadpath) / Path(file.filename)
-                if check_path(save_path):
-                    file.save(save_path)
-                else:
-                    abort(400)
-        else:
-            return render_template("message.html", message="401: UwU, who's this, you aren't supposed to be here",
-                                   title="401 Unauthorized"), 401
-    else:
-        return render_template("upload.html",
-                               form_path="/admin/public/files/upload" + ("/" + uploadpath) if uploadpath else "",
-                               upload_path=uploadpath if uploadpath else "/")
-    return render_template("message.html", message="File(s) uploaded succesfully!",
-                           title="TheTridentGuy - Upload Successful")
+    id_ = request.args.get("id_")
+    return render_template("music.html", id=id_)
 
 
 @app.route("/uwu")
