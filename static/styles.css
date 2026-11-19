@@ -166,7 +166,6 @@ p {
 }
 
 #bio-sidebar,
-#fur-sidebar,
 #blog-sidebar {
     min-width: 25vw;
     padding: 1vmin;
@@ -335,7 +334,16 @@ input {
     max-height: 50vh;
 }
 
+.fur-img {
+    height: 40vmin;
+    object-fit: contain;
+}
+
 figcaption {
     font-family: terminess, sans-serif;
     font-size: smaller;
+}
+
+.art-gallery {
+    flex-wrap: wrap;
 }
